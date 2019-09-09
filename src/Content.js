@@ -1,26 +1,29 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-export default class Content extends Component{
-    constructor(){
-        super()
-        this.state={
-            count:0,
-            name:''
 
-        }
+class Content extends React.Component{
+
+    state = {
+        active: false
     }
-    addNum=()=>{
+    
+    activate = () => {
         this.setState({
-            count:this.state.count+1,
-            name:'test'
-        })
+            active: !this.state.active
+        }) 
+
+        this.props.activationHandler(this.props.value);
     }
+
     render(){
+        let activeCard = this.state.active ? 'activeCard' : '';
+        let className = 'card ${activeCard}'
         return(
-          <div>
-              name:{this.state.name}
-              <button onClick={this.addNum}>count:{this.state.count}</button>
-          </div>  
-        );
+            <div className= {className} onClick={this.activate}>
+               {this.props.value}
+            </div>
+        )
     }
-} 
+}
+
+export default Content;
