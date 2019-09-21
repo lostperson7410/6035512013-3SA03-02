@@ -1,10 +1,9 @@
 import React from 'react';
-import CharacterCard from './Content';
+import CharacterCard from './CharacterCard';
 import './App.css';
 import _ from 'lodash';
-import Content from './Content';
  
-let message = 'PornHub'
+let message = 'Apinun'
  
 const prepareStateFromWord = (given_word) => {
   let word = given_word.toUpperCase()
@@ -33,13 +32,12 @@ class App extends React.Component {
       }
     }
   }
- 
   render() {
     return (
       <div>
         {
           Array.from(this.state.chars).map((item, index) => (
-            <Content
+            <CharacterCard
               value={item}
               key={index}
               activationHandler={this.activationHandler}
@@ -49,20 +47,22 @@ class App extends React.Component {
         <h2>Selected</h2>
         {
           Array.from(this.state.guess).map((item, index) => (
-            <Content
+            <CharacterCard
               value={item}
               key={index}
               activationHandler={this.activationHandler}
             />
           ))
         }
-        <div>Attemp {this.state.attempt}</div>
+        <div>ROUND {this.state.attempt}</div>
         {
           this.state.completed && <h4>Complete</h4>
         }
+        <h3>Player:6035512013 นายอภินันท์ สรสมศักดิ์</h3>
+
       </div>
     )
   }
 }
  
-export default App
+export default App;
